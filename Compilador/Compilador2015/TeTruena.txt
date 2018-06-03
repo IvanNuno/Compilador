@@ -1,0 +1,168 @@
+
+Constante Decimal PI = 3.141592;
+Constante Entero MAX = 30;   
+
+Entero vector[MAX], matriz[MAX][MAX], i, n;
+Decimal r, s;
+Cadena alfa, beta;
+Logico bandera = falso;
+
+// Factorial Recursivo
+Entero FacRec( Entero n) 
+Inicio
+   si ( n < 2 ) hacer regresa 1;
+   sino regresa n * FacRec( n - 1);
+Fin;
+
+// Factorial Iterativo
+Entero FacIter( Entero n )
+Inicio
+   Entero facto = 1;
+   para i en 2 .. n 
+   Inicio
+      facto = facto * i;
+   Fin;
+   regresa facto;
+Fin;
+
+Cadena Concat(Cadena a, Cadena b)
+Inicio
+       regresa a + " " + b;
+Fin;
+
+Notipo Selecciona()
+Inicio
+   Entero opc = 1;
+   
+    Mientras ( opc > 0 y opc < 4 )
+    Inicio
+       Imprime("Factorial 1]Recursivo 2]Iterativo 3]Salir: ");
+       Lee( opc );
+       Si (opc > 0 y opc < 3) hacer
+       inicio
+          Imprime("Dame un numero: ");
+          Lee( n );
+       fin;
+
+       Seleccion(opc)
+       Inicio
+          caso 1: Imprimenl("Factorial Recursivo de ", n, " es= ", FacRec( n ) ); Interrumpe;
+          caso 2: Imprimenl("Factorial Iterativo de ", n, " es= ", FacIter( n ) ); Interrumpe;
+          caso 3: regresa;
+          otro caso: Imprimenl("Opcion No valida");
+        Fin;
+       fin; // Mientras
+    fin;  //Selecciona
+
+    Decimal VolCil(Decimal radio, Decimal altura)
+    inicio
+       regresa PI * radio * radio * altura;
+    fin;
+
+    Notipo  Test()
+    inicio
+       para i en 1 .. 10
+          si (i != 5 ) Imprimenl("i= ", i);
+       i = 1;
+       mientras (verdadero)
+       inicio
+            Imprimenl("i= ", i);
+            si (i == 7) regresa;
+            i = i + 1;
+       fin;
+    fin;
+
+    Notipo LeeVec( Entero k )
+    inicio
+      para i en 1 .. k 
+      Inicio
+         Imprime("Vector[", i, "]: " );
+         lee ( vector [ i ] );
+      fin;
+    fin;
+
+    Notipo OrdVec( Entero k )
+    inicio
+       Entero temp;
+       para i en 1 .. ( k - 1 )
+          para j en ( i + 1 ) ..  k
+              si ( vector[i] > vector[j] )
+              inicio
+                temp = vector[i];
+                vector[i] = vector[j];
+                vector[j] = temp;
+              fin;
+    fin;
+
+    Notipo ImpVec( Entero k)
+    inicio
+       para i en 1 .. k 
+          Imprimenl("Vector[", i, "]= ", vector[i] );
+    fin;
+
+    Notipo LeeMat(Entero k )
+    inicio
+       para i en 1 .. k
+          para j en 1 .. k
+          Inicio
+             Imprime("Matriz[", i, "][", j, "]: ");
+             lee( matriz[i][j] );
+          fin;
+    fin;
+
+    Notipo MulMat( Entero k, Entero v )
+    inicio
+       para i en 1 .. k
+          para j en 1 .. k
+              matriz[i][j] = matriz[i][j] * v;
+    fin;
+
+
+    Notipo ImpMat(k : Entero )
+    inicio
+       para i en 1 .. k
+          para j en 1 .. k
+               Imprimenl( "Matriz[",  i, "][", j, "]= ",
+                           matriz[i][j] );
+    fin;
+
+    Logico Compara( Decimal a, decimal b )
+    inicio
+       regresa a > b;
+    fin;
+
+
+
+
+    Notipo principal()
+    Inicio
+       Selecciona();
+       Imprime("Dame Radio: ");
+       lee ( r );
+       Imprime("Dame Altura: ");
+       lee ( s );
+       Imprimenl("El Volumen del Cilindro= ", VolCil( r, s ) );
+       Imprime ("Es el radio ",  r, 
+                " es mayor que la Altura ", s, "? ");
+       si (Compara( r, s ))
+         Imprimenl( "Verdadero");
+       sino
+         Imprimenl("Falso");
+       LeeVec( 5 );
+       OrdVec( 5 );
+       Imprimenl();
+       Imprimenl("*** Arreglo Ordenado ***");
+       ImpVec( 5 );
+       Imprime("Dame elementos de Matriz NxN: ");
+       lee( n );
+       LeeMat( n );
+       MulMat( n, 100 );
+       ImpMat( n );
+       Test();
+       Imprime("Dame tu nombre: ");
+       lee (alfa);
+       Imprime("Dame tu Apellido: ");
+       lee (beta);
+       Imprimenl("Hola ", Concat(alfa, beta), " ya pasaste!!!");
+    fin;
+
